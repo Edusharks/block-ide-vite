@@ -1,6 +1,7 @@
 import './landing.css'; 
 import 'shepherd.js/dist/css/shepherd.css';
-
+import esp32ImageUrl from '/src/assets/ESP32.png';
+import picoImageUrl from '/src/assets/Pico.png';
 import Shepherd from 'shepherd.js';
 import JSZip from 'jszip';
 import { applyTheme } from '../shared/theme-loader.js';
@@ -56,8 +57,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // === Board & Example Definitions ===
     const boards = [
-    { id: 'esp32', name: 'ESP32', image: '/src/assets/ESP32.png' },
-    { id: 'pico', name: 'Raspberry Pi Pico', image: '/src/assets/Pico.png' },
+    { id: 'esp32', name: 'ESP32', image: esp32ImageUrl },
+    { id: 'pico', name: 'Raspberry Pi Pico', image: picoImageUrl }
     ];
     const exampleProjects = [
          { name: "AI Gesture Mouse", boardId: "esp32", description: "Use hand gestures to control your mouse." },

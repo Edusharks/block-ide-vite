@@ -990,3 +990,63 @@
 [data-theme="contrast"] .theme-btn.active {
     color: var(--bg-primary); /* Black icon on yellow background */
 }
+
+/* === NEW: BOARD SELECTION MODAL STYLING === */
+
+.board-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+}
+
+.board-card {
+    background-color: var(--bg-tertiary);
+    border: 1px solid var(--border-light);
+    border-radius: var(--radius-xl);
+    padding: 1.5rem;
+    text-align: center;
+    cursor: pointer;
+    transition: var(--transition);
+    position: relative;
+    overflow: hidden;
+}
+
+.board-card:hover {
+    transform: translateY(-4px);
+    background-color: var(--bg-secondary);
+    border-color: var(--border-medium);
+}
+
+.board-card.selected {
+    background-color: var(--bg-secondary);
+    border-color: var(--primary);
+    box-shadow: 0 0 0 2px var(--primary);
+}
+
+/* --- Gradient Border Effect for Selected Card --- */
+.board-card.selected::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px; /* Thickness of the gradient line */
+    background: linear-gradient(90deg, var(--primary), var(--secondary));
+}
+
+.board-card img {
+    height: 60px; /* Adjust size as needed */
+    width: auto;
+    margin-bottom: 1rem;
+    object-fit: contain;
+    filter: brightness(0.9) contrast(1.1); /* Subtle image enhancement */
+}
+
+.board-card h3 {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin: 0;
+}
