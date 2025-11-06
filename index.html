@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Block IDE - Select Project Type</title>
+    <link rel="preload" as="image" href="/assets/ESP32.png">
+    <link rel="preload" as="image" href="/assets/Pico.png">
+    <!-- We only need to keep the Google Fonts link. Vite will handle the rest. -->
+    <link rel="icon" href="data:,">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- 
+      This is the FULL, UNCHANGED body of your original index.html.
+      It's important that this is the complete body from your file.
+    -->
+    <div class="landing-container">
+        <header class="app-header">
+            <div class="header-content">
+                <div class="logo">
+                    <a href="https://www.edusharks.com/" target="_blank" rel="noopener noreferrer">
+                        <img src="https://static.wixstatic.com/media/6c9fb0_2693605153ca466b9186ab5a5cdbe201~mv2.png/v1/fill/w_316,h_110,fp_0.50_0.50,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/Edusharks%20(1).png" alt="EduSharks Logo">
+                    </a>
+                </div>
+                <div class="header-actions">
+                   <p class="initial-setup-note">First time? <a href="https://docs.micropython.org/en/latest/esp32/tutorial/intro.html#deploying-the-firmware" target="_blank" rel="noopener noreferrer">Install MicroPython on your device.</a></p>
+                    
+                    <button id="block-creator-btn" class="btn secondary">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><line x1="12" y1="8" x2="12" y2="16"></line><line x1="8" y1="12" x2="16" y2="12"></line></svg>
+                        Block Creator
+                    </button>
+                    
+                    <button id="import-project-btn" class="btn secondary">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M11 15H13V9H16L12 4L8 9H11V15Z" fill="currentColor" /><path d="M20 18H4V11H2V18C2 19.103 2.897 20 4 20H20C21.103 20 22 19.103 22 18V11H20V18Z" fill="currentColor" /></svg>
+                        Import
+                    </button>
+                    <input type="file" id="import-file-input" style="display: none;" accept=".json,.zip">
+                </div>
+            </div>
+        </header>
+
+        <main class="main-content">
+            <div class="main-header-content">
+                <div>
+                    <h2 class="main-title">Your Projects</h2>
+                    <p class="main-subtitle">Welcome back! Here are your recent creations.</p>
+                </div>
+                <div class="project-actions">
+                    <div class="search-wrapper">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 19a8 8 0 1 0 0-16 8 8 0 0 0 0 16z"/><path d="m21 21-4.35-4.35"/></svg>
+                        <input type="text" id="search-projects" placeholder="Search projects...">
+                    </div>
+                    <div class="sort-wrapper">
+                        <select id="sort-projects">
+                            <option value="modified-desc">Sort by Last Modified</option>
+                            <option value="modified-asc">Sort by Oldest</option>
+                            <option value="name-asc">Sort by Name (A-Z)</option>
+                            <option value="name-desc">Sort by Name (Z-A)</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <div class="projects-grid" id="projects-grid">
+                <div class="project-card create-card" id="create-new-project-btn">
+                    <div class="plus-icon">+</div>
+                    <h3>Create New Project</h3>
+                    <p>Start a new hardware or simulation project from scratch.</p>
+                </div>
+            </div>
+            
+            <h2 class="section-title">Start from an Example</h2>
+            <div class="projects-grid" id="examples-grid"></div>
+
+            <h2 class="section-title">Learn with Tutorials</h2>
+            <div class="projects-grid" id="tutorials-grid"></div>
+        </main>
+
+        <div id="drag-drop-overlay" class="drag-drop-overlay">
+            <div class="drag-drop-content">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+                <h3>Drop project file to import</h3>
+            </div>
+        </div>
+
+        <div id="project-context-menu" class="context-menu">
+            <div class="context-menu-item" id="ctx-rename"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>Rename</div>
+            <div class="context-menu-item" id="ctx-duplicate"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>Duplicate</div>
+            <div class="context-menu-separator"></div>
+            <div class="context-menu-item danger" id="ctx-delete"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/><line x1="10" y1="11" x2="10" y2="17"/><line x1="14" y1="11" x2="14" y2="17"/></svg>Delete</div>
+        </div>
+
+        <div class="theme-switcher">
+            <button id="theme-light" class="theme-btn" title="Light Mode"><svg viewBox="0 0 24 24"><path d="M12 12m-4 0a4 4 0 1 0 8 0a4 4 0 1 0 -8 0" /><path d="M3 12h1m8 -9v1m8 8h1m-9 8v1m-6.4 -15.4l.7 .7m12.1 -.7l-.7 .7m0 11.4l.7 .7m-12.1 -.7l-.7 .7" /></svg></button>
+            <button id="theme-dark" class="theme-btn" title="Dark Mode"><svg viewBox="0 0 24 24"><path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z" /></svg></button>
+            <button id="theme-contrast" class="theme-btn" title="High Contrast Mode"><svg viewBox="0 0 24 24"><path d="M12 12m-9 0a9 9 0 1 0 18 0a9 9 0 1 0 -18 0" /><path d="M12 17a5 5 0 0 0 0 -10v10" /></svg></button>
+        </div>
+    </div>
+
+    <div id="new-project-modal" class="modal-backdrop" style="display: none;">
+        <div class="modal-content">
+            <div class="wizard-step active" id="step-1-name-type">
+                <h2 class="modal-title">Create a New Project</h2>
+                <div class="form-group"><label for="modal-project-name">Project Name</label><input type="text" id="modal-project-name" placeholder="My-Awesome-Project"></div>
+                <div class="form-group"><label>Project Type</label><div class="project-type-selection"><div class="type-card" data-type="hardware"><div class="type-card-icon-wrapper hardware-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 11h14v9a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2v-9Z"/><path d="M17.5 11a5.5 5.5 0 1 0-11 0"/><path d="M22 11h-2"/><path d="M4 11H2"/></svg></div><h3>Hardware</h3></div><div class="type-card" data-type="simulation"><div class="type-card-icon-wrapper simulation-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m12 19-7-7 7-7"/><path d="m19 19-7-7 7-7"/></svg></div><h3>Simulation</h3></div></div></div>
+                <div class="modal-buttons"><button id="modal-cancel-btn" class="btn secondary">Cancel</button><button id="modal-next-btn" class="btn primary" disabled>Next</button></div>
+            </div>
+            <div class="wizard-step" id="step-2-board"><h2 class="modal-title">Select a Microcontroller</h2><div class="board-grid"></div><div class="modal-buttons"><button id="modal-back-btn" class="btn secondary">Back</button><button id="modal-create-btn" class="btn primary" disabled>Create Project</button></div></div>
+        </div>
+    </div>
+
+    <div id="project-info-modal" class="modal-backdrop" style="display: none;">
+         <div class="modal-content info-modal">
+            <h2 id="info-modal-title">Project Info</h2>
+            <div class="details-list"><div class="details-list-item"><div class="info-icon">🧠</div><div class="info-content"><dt>Board</dt><dd id="info-modal-board">N/A</dd></div></div><div class="details-list-item"><div class="info-icon">🗓️</div><div class="info-content"><dt>Created</dt><dd id="info-modal-created">N/A</dd></div></div><div class="details-list-item"><div class="info-icon">📝</div><div class="info-content"><dt>Last Modified</dt><dd id="info-modal-modified">N/A</dd></div></div></div>
+            <div class="modal-buttons"><button id="info-modal-close-btn" class="btn primary">Close</button></div>
+        </div>
+    </div>
+
+    <div id="custom-prompt-modal" class="modal-backdrop" style="display: none;"><div class="modal-content"><p id="custom-prompt-message"></p><input type="text" id="custom-prompt-input"><div class="modal-buttons"><button id="custom-prompt-ok" class="btn primary">OK</button><button id="custom-prompt-cancel" class="btn">Cancel</button></div></div></div>
+    <div id="custom-confirm-modal" class="modal-backdrop" style="display: none;"><div class="modal-content"><p id="custom-confirm-message"></p><div class="modal-buttons"><button id="custom-confirm-yes" class="btn primary">Yes</button><button id="custom-confirm-no" class="btn">No</button></div></div></div>
+
+    <script type="module" src="/src/landing/landing.js"></script>
+
+
+</body>
+</html>

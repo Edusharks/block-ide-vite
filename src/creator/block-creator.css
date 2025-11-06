@@ -1,0 +1,260 @@
+/* Import shared theme variables for consistency */
+@import '../shared/styles/theme.css';
+
+:root {
+    --creator-font: 'Inter', sans-serif;
+    --code-font: 'JetBrains Mono', monospace;
+}
+
+body, html {
+    font-family: var(--creator-font);
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+    margin: 0;
+    height: 100vh;
+    overflow: hidden;
+    font-size: 14px; /* Base font size for scaling */
+}
+
+.creator-container {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+/* Header */
+.creator-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.75rem 1.5rem;
+    background: var(--bg-secondary);
+    border-bottom: 1px solid var(--border-light);
+    flex-shrink: 0;
+    box-shadow: var(--shadow-sm);
+}
+
+.creator-header h1 {
+    font-size: 1.1rem;
+    margin: 0;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    color: var(--text-primary);
+}
+.creator-header h1 svg {
+    width: 24px;
+    height: 24px;
+    stroke: var(--primary);
+    fill: none;
+    stroke-width: 1.5;
+}
+
+
+.btn {
+    border: 1px solid var(--border-medium);
+    background-color: var(--bg-secondary);
+    color: var(--text-primary);
+    padding: 0.5rem 1rem;
+    border-radius: var(--radius-lg);
+    font-weight: 600;
+    font-size: 0.85rem;
+    cursor: pointer;
+    transition: var(--transition-fast);
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+.btn.primary {
+    background-color: var(--primary);
+    border-color: var(--primary);
+    color: white;
+}
+.btn.secondary {
+    background-color: transparent;
+}
+.btn:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+}
+.btn svg {
+    width: 16px;
+    height: 16px;
+    stroke: currentColor;
+    fill: none;
+    stroke-width: 2;
+}
+
+
+/* Main Grid Layout */
+.creator-grid {
+    display: grid;
+    grid-template-columns: 3fr 4fr 4fr; /* Adjusted column ratios */
+    gap: 1rem;
+    padding: 1rem;
+    flex-grow: 1;
+    overflow: hidden;
+}
+
+/* Panel Styling */
+.configuration-panel, .preview-panel, .code-panel {
+    background-color: var(--bg-secondary);
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--border-light);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+.panel-header {
+    padding: 0.75rem 1rem;
+    border-bottom: 1px solid var(--border-light);
+    flex-shrink: 0;
+}
+.panel-header h3 {
+    margin: 0;
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+.panel-content {
+    padding: 0.5rem 1rem 1rem 1rem;
+    overflow-y: auto;
+}
+
+/* Configuration Panel */
+.config-section {
+    margin-bottom: 1.25rem;
+}
+.config-section label {
+    display: block;
+    font-size: 0.8rem;
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+    color: var(--text-secondary);
+}
+
+.config-section input[type="text"],
+.config-section textarea,
+.config-section select {
+    width: 100%;
+    padding: 0.6rem;
+    border-radius: var(--radius-md);
+    border: 1px solid var(--border-medium);
+    background-color: var(--bg-primary);
+    font-size: 0.85rem;
+    color: var(--text-primary);
+    transition: var(--transition-fast);
+    box-sizing: border-box;
+}
+.config-section textarea {
+    resize: vertical;
+    min-height: 40px;
+    font-family: var(--creator-font);
+}
+.config-section input:focus, .config-section textarea:focus, .config-section select:focus {
+    outline: none;
+    border-color: var(--primary);
+    box-shadow: 0 0 0 2px var(--primary-glow);
+}
+.help-text {
+    font-size: 0.75rem;
+    color: var(--text-tertiary);
+    margin: 0.25rem 0 0 0;
+}
+.help-text code {
+    background: var(--bg-tertiary);
+    padding: 2px 4px;
+    border-radius: 4px;
+    font-family: var(--code-font);
+}
+
+.dual-grid { display: grid; grid-template-columns: 1fr 2fr; gap: 1rem; align-items: end; }
+.config-section input[type="color"] { width: 100%; height: 35px; padding: 2px; }
+
+.connection-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.5rem; }
+.checkbox-label { display: flex; align-items: center; gap: 0.5rem; font-size: 0.85rem; }
+#output-type-wrapper { margin-top: 0.75rem; }
+#output-type-wrapper.hidden { display: none; }
+
+.inputs-section #inputs-list { display: flex; flex-direction: column; gap: 0.75rem; margin-bottom: 1rem; }
+.input-config-item { background-color: var(--bg-primary); padding: 0.75rem; border-radius: var(--radius-md); border: 1px solid var(--border-light); }
+.input-config-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem; }
+.input-config-header span { font-size: 0.7rem; font-weight: 600; color: var(--text-secondary); text-transform: uppercase; }
+.input-config-header .delete-input-btn { background: none; border: none; font-size: 1.1rem; cursor: pointer; color: var(--text-tertiary); padding: 0 0.25rem; }
+.input-config-item .dual-grid { grid-template-columns: 1fr 1fr; gap: 0.5rem; }
+.input-config-item input { font-size: 0.8rem; padding: 0.5rem; }
+.input-config-item textarea { font-size: 0.8rem; padding: 0.5rem; }
+
+.add-input-form { display: flex; gap: 0.5rem; }
+.add-input-form select { flex-grow: 1; }
+.add-input-form button { flex-shrink: 0; width: 35px; height: 35px; font-size: 1.2rem; background-color: var(--primary); color: white; border: none; border-radius: var(--radius-md); cursor: pointer; }
+
+/* Preview Panel */
+#block-preview-wrapper {
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    background-image: linear-gradient(var(--border-light) 1px, transparent 1px), linear-gradient(90deg, var(--border-light) 1px, transparent 1px);
+    background-size: 20px 20px;
+}
+#preview-svg {
+    filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));
+}
+.block-content {
+    font-size: 12px;
+    font-weight: 500;
+    fill: white;
+}
+.preview-field-rect {
+    fill: white;
+    stroke: none;
+    rx: 4px;
+    ry: 4px;
+}
+.preview-field-text {
+    font-size: 11px;
+    fill: black;
+}
+.preview-field-angle text {
+    text-anchor: middle;
+}
+.preview-field-angle circle {
+    stroke: #ccc;
+    stroke-width: 2px;
+    fill: white;
+}
+.preview-field-angle line {
+    stroke: black;
+    stroke-width: 2px;
+}
+
+/* Code Panel */
+#python-template, #generated-json-output {
+    width: 100%;
+    box-sizing: border-box;
+    font-family: var(--code-font);
+    font-size: 0.8rem;
+    line-height: 1.6;
+    border-radius: var(--radius-md);
+    padding: 0.75rem;
+}
+#generated-json-output {
+    height: flex;
+    background: var(--bg-tertiary);
+    border: 1px solid var(--border-light);
+    white-space: pre-wrap;
+    word-break: break-all;
+    flex-grow: 1;
+    resize: none;
+}
+.code-panel .panel-content {
+    display: flex;
+    flex-direction: column;
+}
+.code-panel .code-section:last-child {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}

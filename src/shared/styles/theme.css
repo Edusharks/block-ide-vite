@@ -1,0 +1,117 @@
+/*
+ * FILE: src/shared/styles/theme.css
+ * DESCRIPTION: Central theme definitions and global styles for the entire application.
+ */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&display=swap');
+
+/* === NEO-DEPTH THEME DEFINITIONS === */
+:root,
+[data-theme="dark"] {
+    --bg-primary: #0f1117;
+    --bg-secondary: #1a1d28;
+    --bg-tertiary: #252a3a;
+    --bg-overlay: rgba(30, 33, 50, 0.85);
+    
+    --text-primary: #f0f2f6;
+    --text-secondary: #b4b9c8;
+    --text-tertiary: #8a91a8;
+    --text-light: #ffffff;
+    
+    --primary: #7c6af2;
+    --primary-dark: #6a59e0;
+    --primary-glow: rgba(124, 106, 242, 0.15);
+    --secondary: #ff6b9d;
+    --accent: #ffb74d;
+    --success: #4cd97b;
+    --error: #ff5a79;
+    
+    --border-light: rgba(255, 255, 255, 0.08);
+    --border-medium: rgba(255, 255, 255, 0.12);
+    --border-heavy: rgba(255, 255, 255, 0.2);
+    
+    --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.3);
+    --shadow-md: 0 8px 30px rgba(0, 0, 0, 0.4);
+    --shadow-lg: 0 20px 60px rgba(0, 0, 0, 0.5);
+    --shadow-xl: 0 35px 90px rgba(0, 0, 0, 0.6);
+    
+    --font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    --code-font: 'JetBrains Mono', monospace;
+    
+    --radius-sm: 6px;
+    --radius: 10px;
+    --radius-lg: 14px;
+    --radius-xl: 20px;
+    --radius-2xl: 28px;
+    
+    --transition-fast: all 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-slow: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    
+    --backdrop-blur: blur(20px);
+}
+
+[data-theme="light"] {
+    --bg-primary: #f8fafc;
+    --bg-secondary: #ffffff;
+    --bg-tertiary: #f1f5f9;
+    --bg-overlay: rgba(255, 255, 255, 0.85);
+    
+    --text-primary: #1e293b;
+    --text-secondary: #64748b;
+    --text-tertiary: #94a3b8;
+    
+    --primary: #6366f1;
+    --primary-dark: #4f46e5;
+    --primary-glow: rgba(99, 102, 241, 0.1);
+    --secondary: #ec4899;
+    --accent: #f59e0b;
+    --success: #10b981;
+    --error: #ef4444;
+    
+    --border-light: rgba(0, 0, 0, 0.06);
+    --border-medium: rgba(0, 0, 0, 0.1);
+    --border-heavy: rgba(0, 0, 0, 0.2);
+    
+    --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.08);
+    --shadow-md: 0 8px 30px rgba(0, 0, 0, 0.12);
+    --shadow-lg: 0 20px 60px rgba(0, 0, 0, 0.15);
+    --shadow-xl: 0 35px 90px rgba(0, 0, 0, 0.18);
+}
+
+[data-theme="contrast"] {
+    --primary: #ffff00;
+    --primary-dark: #ffff00;
+    --secondary: #ff00ff;
+    --accent: #ffff00;
+    --success: #00ff00;
+    --error: #ff0000;
+    --text-primary: #ffffff;
+    --text-secondary: #ffffff;
+    --text-tertiary: #ffff00;
+    --text-light: #000000;
+    --bg-primary: #000000;
+    --bg-secondary: #000000;
+    --bg-tertiary: #222222;
+    --border-light: #ffff00;
+    --border-medium: #ffff00;
+    --shadow-sm: none;
+    --shadow-md: none;
+}
+
+/* === BASE RESET === */
+* { 
+    box-sizing: border-box; 
+    margin: 0; 
+    padding: 0; 
+}
+
+body { 
+    font-family: var(--font-family); 
+    background-color: var(--bg-primary); 
+    color: var(--text-primary); 
+    line-height: 1.6; 
+    overflow: hidden;
+    font-weight: 400;
+}

@@ -1,0 +1,86 @@
+Block IDE v1.0/
+├── .gitignore
+├── ide.html                     
+├── index.html                   
+├── package.json
+├── package-lock.json
+├── simulation-ide.html          
+├── tsconfig.json
+├── vite.config.ts               
+│
+├── public/                      
+│   ├── assets/
+│   │   ├── ESP32.png
+│   │   ├── Pico.png
+│   │   └── wiring/
+│   │       ├── dht11.svg
+│   │       ├── hcsr04.svg
+│   │       └── oled.svg
+│   │
+│   ├── media/                   
+│   └── pyright.worker.js       
+│
+└── src/
+    │
+    ├── ide/                  
+    │   ├── blockly/             
+    │   │   ├── basic-blocks.js
+    │   │   ├── basic-generators.js
+    │   │   ├── blockly-init.js
+    │   │   ├── esp32-blocks.js
+    │   │   ├── esp32-generators.js
+    │   │   ├── face-landmark-blocks.js
+    │   │   ├── face-landmark-generators.js
+    │   │   ├── hand-gesture-blocks.js
+    │   │   ├── hand-gesture-generators.js
+    │   │   ├── image-classification-blocks.js
+    │   │   ├── image-classification-generators.js
+    │   │   ├── object-detection-blocks.js
+    │   │   ├── object-detection-generators.js
+    │   │   ├── pico-blocks.js
+    │   │   └── pico-generators.js
+    │   │
+    │   ├── managers/           
+    │   │   ├── AiVisionManager.js
+    │   │   ├── BlockGenius.js
+    │   │   ├── CommunicationManager.js
+    │   │   ├── DashboardBuilder.js
+    │   │   └── DeviceFileManager.js
+    │   │
+    │   ├── utils/               
+    │   │   ├── ble-comm.js
+    │   │   ├── serial-comm.js
+    │   │   └── webrepl.js
+    │   │
+    │   ├── ide-entry.js         
+    │   ├── ide-tutorials.js   
+    │   ├── ide.css              
+    │   └── ide.js           
+    │
+    ├── landing/                
+    │   ├── landing-tutorials.js 
+    │   ├── landing.css          
+    │   └── landing.js           
+    │
+    ├── simulation/              
+    │   ├── blockly/             
+    │   │   ├── blockly-simulation-init.js
+    │   │   ├── simulation-blocks.js
+    │   │   └── simulation-generators.js
+    │   │
+    │   ├── simulation-ide-entry.js 
+    │   ├── simulation-ide.js      
+    │   ├── simulation-runtime.js   
+    │   ├── simulation-tutorials.js 
+    │   └── simulation.css        
+    │
+    └── shared/               
+        ├── styles/
+        │   ├── theme.css        
+        │   └── components.css
+        │
+        ├── utils/
+        │   ├── db.js            
+        │   └── modals.js       
+        │
+        └── theme-loader.js      
