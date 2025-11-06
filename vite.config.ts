@@ -12,7 +12,6 @@ export default defineConfig({
         main: resolve(__dirname, 'index.html'),
         ide: resolve(__dirname, 'ide.html'),
         simulation: resolve(__dirname, 'simulation-ide.html'),
-        componentEditor: resolve(__dirname, 'component-editor.html'),
       },
     },
   },
