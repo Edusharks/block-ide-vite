@@ -56,8 +56,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // === Board & Example Definitions ===
     const boards = [
-    { id: 'esp32', name: 'ESP32', image: '/assets/ESP32.png' },
-    { id: 'pico', name: 'Raspberry Pi Pico', image: '/assets/Pico.png' },
+    { id: 'esp32', name: 'ESP32', image: '/src/assets/ESP32.png' },
+    { id: 'pico', name: 'Raspberry Pi Pico', image: '/src/assets/Pico.png' },
     ];
     const exampleProjects = [
          { name: "AI Gesture Mouse", boardId: "esp32", description: "Use hand gestures to control your mouse." },
