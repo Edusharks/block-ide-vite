@@ -135,7 +135,10 @@ class ESP32BlockIDE {
         this.CONSOLE_UPDATE_INTERVAL = 100;
         this.MAX_CONSOLE_LINES = 2000;
         this.MAX_PLOTTER_POINTS = 50;
-        this.boardImageMap = { 'esp32': '/assets/ESP32.png', 'pico': '/assets/Pico.png' };
+        this.boardImageMap = {
+              'esp32': new URL('../assets/ESP32.png', import.meta.url).href,
+              'pico': new URL('../assets/Pico.png', import.meta.url).href
+        };
         this.boardNameMap = { 'esp32': 'ESP32', 'pico': 'Pico' };
         this.availableExtensions = [
             { id: 'face_landmark', name: 'Face Landmark', description: 'Detect faces and expressions like smiling or blinking.', color: '#6d28d9', icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 12a3 3 0 100-6 3 3 0 000 6z"/><path d="M20.9 19.8A10 10 0 103.1 4.2"/></svg>` },

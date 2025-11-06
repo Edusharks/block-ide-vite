@@ -11,24 +11,24 @@ export class BlockGenius {
             geniusCloseBtn: document.getElementById('genius-close-btn'),
         };
 
-        this.tips = {
-            'sensor_dht11': {
-                title: 'DHT11 Sensor',
-                description: 'This sensor measures temperature and humidity. Here is a common way to wire it.',
-                image: 'src/renderer/assets/wiring/dht11.svg'
-            },
-            'display_oled_setup': {
-                title: 'OLED Display',
-                description: 'This block sets up a 128x64 OLED screen. Ensure the I2C pins match your wiring.',
-                image: 'src/renderer/assets/wiring/oled.svg'
-            },
-            'sensor_ultrasonic_hcsr04': {
-                title: 'Ultrasonic Sensor',
-                description: 'The HC-SR04 measures distance. Make sure Trig and Echo pins are correct.',
-                image: 'src/renderer/assets/wiring/hcsr04.svg'
-            }
-            // Add more tips here
-        };
+this.tips = {
+    'sensor_dht11': {
+        title: 'DHT11 Sensor',
+        description: 'This sensor measures temperature and humidity. Here is a common way to wire it.',
+        image: new URL('../assets/wiring/dht11.svg', import.meta.url).href
+    },
+    'display_oled_setup': {
+        title: 'OLED Display',
+        description: 'This block sets up a 128x64 OLED screen. Ensure the I2C pins match your wiring.',
+        image: new URL('../assets/wiring/oled.svg', import.meta.url).href
+    },
+    'sensor_ultrasonic_hcsr04': {
+        title: 'Ultrasonic Sensor',
+        description: 'The HC-SR04 measures distance. Make sure Trig and Echo pins are correct.',
+        image: new URL('../assets/wiring/hcsr04.svg', import.meta.url).href
+    }
+    // Add more tips here
+};
 
         this.toastTimeout = null;
         this.seenBlocksKey = 'blockGeniusSeen';
